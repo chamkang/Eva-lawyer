@@ -1,0 +1,8 @@
+# Private runtime data (form backups, signing key) – never commit
+storage/*
+!storage/.htaccess
+
+# Local tooling
+.claude/
+.DS_Store
+Thumbs.db

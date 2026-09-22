@@ -28,7 +28,9 @@ $nav = [
 <title><?= e($page['title']) ?></title>
 <meta name="description" content="<?= e($page['description']) ?>">
 <link rel="canonical" href="<?= e($canonical) ?>">
-<?php if (!empty($page['noindex'])): ?>
+<?php if (is_preview()): ?>
+<meta name="robots" content="noindex, nofollow"><!-- PREVIEW MODE: see includes/config.php -->
+<?php elseif (!empty($page['noindex'])): ?>
 <meta name="robots" content="noindex, follow">
 <?php else: ?>
 <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">

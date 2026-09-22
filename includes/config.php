@@ -16,6 +16,31 @@ const SITE_URL_OVERRIDE = '';
 // If the site lives in a sub-folder (e.g. example.com/lawfirm) set '/lawfirm'.
 const BASE_PATH = '';
 
+/*
+ * ============================================================================
+ *  PREVIEW MODE: hides the site from Google / Bing / AI crawlers
+ * ============================================================================
+ *  It switches ON AUTOMATICALLY when the site runs on a free or temporary
+ *  preview address (localhost, Cloudflare tunnel, InfinityFree subdomains…),
+ *  so a preview copy never gets indexed and competes with the real site.
+ *  On the client's real domain it is OFF automatically, so there is
+ *  NOTHING TO CHANGE when you move to real hosting.
+ *
+ *  REMINDER when going live on the real domain:
+ *    1. Keep FORCE_PREVIEW = false.
+ *    2. Make sure the real domain is NOT listed in PREVIEW_HOSTS below.
+ *    3. Check https://REAL-DOMAIN/robots.txt shows "Allow: /" (not "Disallow: /").
+ *  If you use a different free host for a preview, add its domain below.
+ * ============================================================================
+ */
+const FORCE_PREVIEW = false;
+const PREVIEW_HOSTS = [
+    'localhost', '127.0.0.1',
+    '*.trycloudflare.com', '*.ngrok-free.app', '*.ngrok.io',
+    '*.infinityfreeapp.com', '*.free.nf', '*.rf.gd', '*.epizy.com', '*.wuaze.com', '*.ct.ws',
+    '*.kesug.com', '*.lovestoblog.com', '*.42web.io', '*.great-site.net', '*.page.gd', '*.gt.tc',
+];
+
 const FIRM = [
     'name'          => 'BAME KANG & Co',
     'legal_name'    => 'BAME KANG & Co – Barristers, Solicitors & Legal Practitioners',

@@ -21,6 +21,21 @@ function site_url(): string
     return ($https ? 'https' : 'http') . '://' . $host . BASE_PATH;
 }
 
+/** True on preview/free hosts (see PREVIEW MODE in config.php) – the site is then hidden from search engines. */
+function is_preview(): bool
+{
+    if (FORCE_PREVIEW) {
+        return true;
+    }
+    $host = strtolower(preg_replace('/:\d+$/', '', $_SERVER['HTTP_HOST'] ?? 'localhost'));
+    foreach (PREVIEW_HOSTS as $pattern) {
+        if (fnmatch($pattern, $host) || $host === ltrim($pattern, '*.')) {
+            return true;
+        }
+    }
+    return false;
+}
+
 /** Root-relative link to a route, e.g. url('services/tax-law'). */
 function url(string $path = ''): string
 {

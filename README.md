@@ -18,13 +18,6 @@ Then open http://localhost:8000
 | `assets/` | CSS, JS, optimised WebP images |
 | `storage/` | Private: form backups and signing key (blocked from the web) |
 
-## Preview mode (automatic, nothing to switch off)
-On free/preview hosts (InfinityFree subdomains, localhost, Cloudflare tunnels) the site automatically
-tells Google and AI crawlers **not to index it**, so the preview never competes with the real site.
-On the client's real domain it switches off by itself.
-**REMINDER when going live:** keep `FORCE_PREVIEW = false` in `includes/config.php`, make sure the real domain
-is not in `PREVIEW_HOSTS`, and check that `https://REAL-DOMAIN/robots.txt` shows `Allow: /`.
-
 ## Before going live (required)
 1. Upload everything to the hosting root (Apache or LiteSpeed/cPanel with `mod_rewrite`).
 2. In `includes/config.php` set `SITE_URL_OVERRIDE` to the real domain, e.g. `https://www.bamekanglaw.com`,

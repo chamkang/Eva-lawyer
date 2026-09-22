@@ -20,11 +20,6 @@ if (PHP_SAPI === 'cli-server') {
 require __DIR__ . '/includes/functions.php';
 require __DIR__ . '/includes/seo.php';
 
-// Preview/free hosts must never be indexed (see PREVIEW MODE in includes/config.php).
-if (is_preview()) {
-    header('X-Robots-Tag: noindex, nofollow', true);
-}
-
 $path = trim(substr($uriPath, strlen(BASE_PATH)), '/');
 
 // ---------------------------------------------------------------------------

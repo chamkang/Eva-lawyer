@@ -2,13 +2,6 @@
 declare(strict_types=1);
 
 header('Content-Type: text/plain; charset=UTF-8');
-if (is_preview()) {
-    echo "# PREVIEW COPY – not for indexing. The live site is on the firm's own domain.
-User-agent: *
-Disallow: /
-";
-    return;
-}
 ?>
 # BAME KANG & Co – law firm in Douala, Cameroon
 # All search engines and AI assistants are welcome to read and cite this site.

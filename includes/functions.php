@@ -56,8 +56,28 @@ function data(string $name): array
 
 function services(): array { return data('services'); }
 function team(): array     { return data('team'); }
-function guides(): array   { return data('guides'); }
 function faqs(): array     { return data('faqs'); }
+
+/**
+ * Guides = articles written in the browser (storage/posts, newest first)
+ * followed by the guides shipped in data/guides.php.
+ */
+function guides(): array
+{
+    static $all = null;
+    if ($all !== null) {
+        return $all;
+    }
+    $all = [];
+    require_once __DIR__ . '/admin.php';
+    foreach (admin_posts(false) as $slug => $post) {
+        $all[$slug] = post_to_guide($post);
+    }
+    foreach (data('guides') as $slug => $guide) {
+        $all[$slug] ??= $guide;
+    }
+    return $all;
+}
 
 function years_in_practice(): int
 {

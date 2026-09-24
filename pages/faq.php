@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 $groups = faqs();
 $all = array_merge(...array_values($groups));
-$groupIcons = ['scale', 'globe', 'briefcase', 'gavel', 'award'];
+$groupIcons = ['scale', 'globe', 'briefcase', 'gavel', 'book', 'users', 'award'];
 
 $page = [
     'title'       => 'FAQs – Hiring a Lawyer in Cameroon, OHADA, Land, Debts & Business | BAME KANG & Co',

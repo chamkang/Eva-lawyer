@@ -70,6 +70,7 @@ $routes = [
     'areas-we-serve'        => 'areas',
     'legal-guides'          => 'guides',
     'contact'               => 'contact',
+    'admin'                 => 'admin',
     'privacy-policy'        => 'privacy',
     'fr'                    => 'french',
     'sitemap.xml'           => 'sitemap',

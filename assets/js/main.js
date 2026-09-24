@@ -100,6 +100,24 @@
     });
   }
 
+  /* Lead tracking: report calls, WhatsApp chats, emails and form sends to Google Analytics
+     (only active when a measurement ID is set in includes/config.php) */
+  document.addEventListener('click', function (e) {
+    if (typeof window.gtag !== 'function') return;
+    var a = e.target.closest && e.target.closest('a[href]');
+    if (!a) return;
+    var href = a.getAttribute('href') || '';
+    var type = href.indexOf('tel:') === 0 ? 'call'
+      : href.indexOf('mailto:') === 0 ? 'email'
+      : href.indexOf('wa.me') !== -1 ? 'whatsapp' : null;
+    if (type) window.gtag('event', 'contact_' + type, { method: type, link_url: href });
+  });
+  document.querySelectorAll('form[data-validate]').forEach(function (form) {
+    form.addEventListener('submit', function () {
+      if (typeof window.gtag === 'function') window.gtag('event', 'generate_lead', { method: 'contact_form' });
+    });
+  });
+
   /* Client-side form validation (server validates again) */
   document.querySelectorAll('form[data-validate]').forEach(function (form) {
     form.addEventListener('submit', function (e) {

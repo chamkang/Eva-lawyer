@@ -37,6 +37,12 @@ $nav = [
 <link rel="alternate" hreflang="<?= e($hl) ?>" href="<?= e(abs_url($altPath)) ?>">
 <?php endforeach; ?>
 <meta name="author" content="<?= e(FIRM['name']) ?>">
+<?php if (GOOGLE_SITE_VERIFICATION !== ''): ?>
+<meta name="google-site-verification" content="<?= e(GOOGLE_SITE_VERIFICATION) ?>">
+<?php endif; ?>
+<?php if (BING_SITE_VERIFICATION !== ''): ?>
+<meta name="msvalidate.01" content="<?= e(BING_SITE_VERIFICATION) ?>">
+<?php endif; ?>
 <meta name="geo.region" content="CM-LT">
 <meta name="geo.placename" content="Douala, Cameroon">
 <meta name="geo.position" content="<?= FIRM['lat'] ?>;<?= FIRM['lng'] ?>">
@@ -72,6 +78,16 @@ $nav = [
 <link rel="preload" as="image" href="<?= e($page['preload']) ?>" fetchpriority="high">
 <?php endif; ?>
 <?= render_schema($page) ?>
+<?php if (GA_MEASUREMENT_ID !== ''): /* Google Analytics 4 – loads only when an ID is configured */ ?>
+<link rel="preconnect" href="https://www.googletagmanager.com">
+<script async src="https://www.googletagmanager.com/gtag/js?id=<?= e(GA_MEASUREMENT_ID) ?>"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', '<?= e(GA_MEASUREMENT_ID) ?>', {anonymize_ip: true});
+</script>
+<?php endif; ?>
 </head>
 <body class="page-<?= e($page['nav'] ?? 'default') ?>">
 <a class="skip-link" href="#main">Skip to content</a>

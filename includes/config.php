@@ -16,6 +16,15 @@ const SITE_URL_OVERRIDE = '';
 // If the site lives in a sub-folder (e.g. example.com/lawfirm) set '/lawfirm'.
 const BASE_PATH = '';
 
+// Google Analytics 4 measurement ID, e.g. 'G-XXXXXXXXXX'. Empty = no tracking at all.
+const GA_MEASUREMENT_ID = '';
+
+// Google Search Console HTML-tag verification code (the "content" value only).
+const GOOGLE_SITE_VERIFICATION = '';
+
+// Bing Webmaster Tools verification code (the "content" value only).
+const BING_SITE_VERIFICATION = '';
+
 const FIRM = [
     'name'          => 'BAME KANG & Co',
     'legal_name'    => 'BAME KANG & Co – Barristers, Solicitors & Legal Practitioners',

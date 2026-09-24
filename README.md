@@ -34,6 +34,42 @@ Then open http://localhost:8000
 - 301 redirects from every old `.html` URL
 - Fast: ~2.6 MB whole site (was 57 MB), WebP images, no jQuery/Bootstrap, lazy loading, gzip and 1-year caching
 
+## Google Analytics & Search Console
+Open `includes/config.php` and paste the codes:
+* `GA_MEASUREMENT_ID` – from Google Analytics (looks like `G-ABC123XYZ`). Empty = no tracking scripts at all.
+* `GOOGLE_SITE_VERIFICATION` / `BING_SITE_VERIFICATION` – the `content="..."` value of the HTML tag each tool gives you.
+
+Once the GA ID is set, the site also reports these lead events automatically:
+`contact_call`, `contact_whatsapp`, `contact_email` and `generate_lead` (contact form sent).
+In GA4 they appear under **Reports → Engagement → Events**.
+
+## Publishing a new guide / blog article
+Guides live at `/legal-guides`. To add one, open `data/guides.php` and copy an existing block:
+
+```php
+'slug-of-the-article' => [          // becomes /legal-guides/slug-of-the-article
+    'title'    => 'Full headline shown on the page',
+    'short'    => 'Short title for cards and menus',
+    'seo_title'=> 'Title for Google (use {year} for the current year)',
+    'meta'     => 'One sentence, 150 characters, shown in Google results.',
+    'excerpt'  => 'One line shown on the guides page card.',
+    'icon'     => 'briefcase',       // any icon name used elsewhere in the site
+    'minutes'  => 5,
+    'updated'  => '2026-09-24',
+    'services' => ['corporate-law'], // related service pages
+    'body'     => <<<HTML
+<p>Opening paragraph …</p>
+<h2>A sub-heading</h2>
+<ul><li>Points …</li></ul>
+HTML,
+    'faqs' => [
+        ['A question people actually type into Google?', 'A direct answer in 2–3 sentences.'],
+    ],
+],
+```
+Nothing else to do: the sitemap, the guides page, the related-services links, the FAQ structured data
+and `llms.txt` all pick it up automatically.
+
 ## SEO: steps only the firm can do (highest impact)
 1. **Google Business Profile** (business.google.com): claim or create "BAME KANG & Co", category *Law firm*, exact same
    name/address/phone as the website, hours, photos of the office, and link the website. This is the #1 factor for
